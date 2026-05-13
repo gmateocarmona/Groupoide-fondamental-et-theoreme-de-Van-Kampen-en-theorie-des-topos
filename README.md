@@ -9,7 +9,7 @@ This project, involving the transcription of O. Leroy's thesis, was carried out 
 ## 
 
 - [x] Transcription <br>
-[Releases](https://github.com/gmateocarmona/Jouanolou/releases), [pdf](https://github.com/gmateocarmona/categories-derivees-en-cohomologie-l-adique/releases/download/main-2026-05-13-d6bcc9a9/main-2026-05-13-d6bcc9a9.pdf)
+[Releases](), [pdf]()
 - [x] Proofread
 - [ ] Preprint
 
