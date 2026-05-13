@@ -1,1 +1,319 @@
+% !TEX program = xelatex
+\documentclass[12pt,twoside]{report} %openright
+	%\usepackage[utf8]{inputenc}
+ 	\usepackage[greek,english]{babel}
+    \usepackage{yfonts}
+	\usepackage{latexsym}
+	\usepackage{amsmath}
+	\usepackage{amssymb}
+	\usepackage{amsthm}
+	\usepackage{stmaryrd}
+	\usepackage{pb-diagram}
+	\usepackage{amscd}
+	\usepackage{mathrsfs}
+	\usepackage{enumerate}
+	\usepackage{color}
+	\usepackage{cite}
+	%\usepackage{graphicx}
+	\usepackage[all]{xy}
+	
+	 
+	\usepackage{graphicx}
+\graphicspath{ {./images/} }
+	
+	%\usepackage{fixltx2e}
+	\usepackage{extarrows}
+	\usepackage{datetime}
+	\usepackage{mathtools}
+    \usepackage{remreset}
+    \usepackage{afterpage}
+    \usepackage{verbatim}
 
+    \usepackage[svgnames]{xcolor}
+	\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=[RGB]{61,82,62},
+    filecolor=[RGB]{61,82,62},
+    urlcolor=[RGB]{61,82,62},
+    citecolor=[RGB]{61,82,62},
+    pdftitle={Groupoïde fondamental et théorème de Van Kampen en théorie des topos},
+    pdfauthor={O. Leroy},
+    pdflang={fr}
+}
+
+\usepackage{bookmark}
+    %\usepackage{csquotes}
+    \usepackage{etoc}
+
+\usepackage{pdflscape}
+	
+	\usepackage{fontspec}
+	\setmainfont{EB Garamond}
+	\usepackage{float}
+	\usepackage[12pt]{moresize}
+	\usepackage{titlesec}
+	\usepackage[twoside,top=1.5in,bottom=1.5in,left=1in,right=1.3in,headheight=16pt,headsep=30pt,footskip=40pt]{geometry}
+
+	\linespread{1.25}
+%	\linespread{1.05}
+
+
+%\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{quiver}[2021/01/11 quiver]
+\RequirePackage{tikz-cd}
+\RequirePackage{amssymb}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+
+
+% A TikZ style for curved arrows of a fixed height, due to AndréC.
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+	% use osf for figures in math mode
+	\DeclareSymbolFont{digits}{\encodingdefault}{\rmdefault}{m}{n}
+	\SetSymbolFont{digits}{normal}{\encodingdefault}{\rmdefault}{m}{n}
+	\DeclareMathSymbol{0}{\mathalpha}{digits}{"30}
+	\DeclareMathSymbol{1}{\mathalpha}{digits}{"31}
+	\DeclareMathSymbol{2}{\mathalpha}{digits}{"32}
+	\DeclareMathSymbol{3}{\mathalpha}{digits}{"33}
+	\DeclareMathSymbol{4}{\mathalpha}{digits}{"34}
+	\DeclareMathSymbol{5}{\mathalpha}{digits}{"35}
+	\DeclareMathSymbol{6}{\mathalpha}{digits}{"36}
+	\DeclareMathSymbol{7}{\mathalpha}{digits}{"37}
+	\DeclareMathSymbol{8}{\mathalpha}{digits}{"38}
+	\DeclareMathSymbol{9}{\mathalpha}{digits}{"39}
+	% helvetica for sans in math
+	\DeclareMathAlphabet{\mathsf}{\encodingdefault}{phv}{m}{n}
+	%\usepackage{showkeys}
+	%\usepackage{showframe}
+	\usepackage{fancyhdr}
+	%\fancyhead[CO]{\rightmark}
+	\fancyhead[CO]{}
+	%\fancyhead[CE]{\leftmark}
+	\fancyhead[CE]{}
+	\fancyhead[RE]{}
+	\fancyhead[LO]{}
+	\fancyhead[RO]{}
+	\fancyhead[LE]{}
+	\cfoot{\thepage}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\titleformat\section{\normalfont\Large\centerline{\hss\rule{1.3in}{.01in}\hss}}{\thesection}{1em}{}
+    \titleformat{\chapter}[display]{}{\huge\filcenter { \thechapter}}{12pt}{\large \filcenter}
+
+%\newcommand\hmmax{0}
+%\newcommand\bmmax{0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand*\isommap{%
+  \xrightarrow{\raisebox{-0.2 em}{\smash{\ensuremath{\sim}}}}%
+}
+
+\newcommand*\isomlong{%
+  \xlongrightarrow{\raisebox{-0.2 em}{\smash{\ensuremath{\sim}}}}%
+}
+
+ \newcommand{\cHom}{\mathrel{\mathscr{H}\mkern-2mu\text{\upshape om}}}
+ \newcommand{\cTor}{\mathrel{\mathscr{T}\mkern-2mu\text{\upshape or}}}
+ \newcommand{\cExt}{\mathrel{\mathscr{E}\mkern-2mu\text{\upshape xt}}}
+
+   \DeclareMathOperator{\D}{D}
+    \DeclareMathOperator{\K}{K}
+    \DeclareMathOperator{\Ld}{\mathrel{L}}
+    \DeclareMathOperator{\Rd}{\mathrel{R}}
+    \DeclareMathOperator{\Hom}{Hom}
+    \DeclareMathOperator*{\bHom}{\mathnormal{\mathbf{Hom}}}
+    \DeclareMathOperator*{\bRd}{\mathrm{\mathbf{R}}} 
+    \DeclareMathOperator*{\bLd}{\mathrm{\mathbf{L}}}
+    \DeclareMathOperator{\bH}{\mathbf{H}}
+    \DeclareMathOperator{\Fibtop}{Fibtop}
+    \DeclareMathOperator{\SLC}{SLC}
+    \DeclareMathOperator{\Ob}{Ob}
+    \DeclareMathOperator{\Cart}{Cart}
+    \DeclareMathOperator{\Cartop}{Cartop}
+    \DeclareMathOperator{\Top}{Top}
+    \DeclareMathOperator{\Grpd}{Grpd}
+
+    \DeclareMathOperator{\Ens}{Ens}
+    \DeclareMathOperator{\Dis}{Dis}
+    \DeclareMathOperator{\Aut}{Aut}
+    \DeclareMathOperator{\Homtop}{Homtop}
+    \DeclareMathOperator{\pr}{pr}
+    \DeclareMathOperator{\Point}{Point}
+    \DeclareMathOperator{\SLCF}{SLCF}
+    \DeclareMathOperator{\LC}{LC}
+    \DeclareMathOperator{\App}{App}
+    \DeclareMathOperator{\Img}{Img}
+    \DeclareMathOperator{\Fonct}{Fonct}
+    \DeclareMathOperator{\cart}{cart}
+    \DeclareMathOperator{\Tors}{Tors}
+    \DeclareMathOperator{\Isom}{Isom}
+    \DeclareMathOperator{\Card}{Card}
+
+	% arrows
+	 \newcommand{\isom}{\simeq}
+	\newcommand{\xto}{\xrightarrow}
+	\renewcommand{\to}{\longrightarrow}
+	\def\rinto{\HorizontalMap\rthooka-\empty-\rhla}
+	\def\linto{\HorizontalMap\lhla-\empty-\lthooka}
+	\def\dinto{\VerticalMap\dthookb|\empty|\dhla}
+	\def\uinto{\VerticalMap\uhla|\empty|\uthookb}
+
+	% categories
+	\def\cC{{\cal C}}
+	\def\cF{{\cal F}}
+	\def\cG{{\cal G}}
+	\def\cH{{\cal H}}
+	\def\cU{{\cal U}}
+
+	% symbols
+	\renewcommand{\emptyset}{\varnothing}
+	\renewcommand{\phi}{\varphi}
+	\newcommand{\und}{\underline}
+
+	% environments
+	\theoremstyle{plain}
+		\newtheorem{lemma}{Lemma}[section]
+		\newtheorem{corollary}[lemma]{Corollary}
+		\newtheorem{proposition}[lemma]{Proposition}
+		\newtheorem{theorem}[lemma]{Theorem}
+		\newtheorem*{theorem*}{Theorem}
+		\newtheorem*{corollary*}{Corollary}
+		\newtheorem{conjecture}{Conjecture}
+	\theoremstyle{definition}
+		\newtheorem{definition}[lemma]{Definition}
+		\newtheorem{example}[lemma]{Example}
+		\newtheorem{remark}[lemma]{Remark}
+		\newtheorem{construction}[lemma]{Construction}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+\newcommand*{\toccontents}{\@starttoc{toc}}
+\makeatother
+
+\makeatletter
+\@addtoreset{footnote}{section}
+\makeatother
+
+%\usepackage{sectsty}
+%\partfont{\LARGE}
+
+\begin{document}
+\setcounter{tocdepth}{2}
+\sloppy
+
+\newgeometry{left=1.5in,right=1.5in, bottom=1.5in}
+
+\thispagestyle{empty}
+%\vspace*{\fill}
+\noindent\makebox[\linewidth]{\rule{4in}{0.01in}}
+\vspace*{\fill}
+\begin{center}
+    {\Huge Groupoïde fondamental et} \\
+    \vspace{0.5em}
+    {\Huge théorème de Van Kampen} \\
+    \vspace{0.5em}
+    {\Huge en théorie des topos} \\
+    \vspace{0.5em}
+    {\Large par} \\
+    \vspace{0.5em}
+    {\huge Olivier Leroy}
+\end{center}
+\vspace*{\fill}
+\noindent\makebox[\linewidth]{\rule{4in}{0.01in}}
+%\vspace*{\fill}
+
+\newpage
+\thispagestyle{empty}
+\begin{center}
+\setlength{\baselineskip}{24pt}
+\  \\
+{
+\ \\
+[0.5in] CAHIERS MATHÉMATIQUES MONTPELLIER \\ 1979 \\
+[1.5in] {\large GROUPOÏDE FONDAMENTAL ET THÉORÈME DE VAN KAMPEN EN THÉORIE DES TOPOS \\ Olivier LEROY} \\
+[2in] UNIVERSITÉ DES SCIENCES \\ ET TECHNIQUES \\ DU LANGUEDOC \\ U. E. R. DE MATHÉMATIQUES \\
+Place Eugène Bataillon \\ 34060 MONTPELLIER CEDEX 
+}
+\end{center}
+\vfill
+\vfill
+\vfill
+
+
+\newpage
+
+\begin{center}
+\thispagestyle{empty}
+\setlength{\baselineskip}{24pt}
+\  \\
+{\large
+\ \\
+[3in] Ce travail m'a été suggéré par C. CONTOU-CARRÈRE et A. GROTHENDIECK. \\
+Mes résultats ont été exposés lors de séances de géométrie algébrique faites avec D. ALIBERT et C. CONTOU-CARRÈRE. \\
+}
+\vfill
+\end{center}
+\vfill
+
+\newpage 
+\thispagestyle{empty}
+
+\null\vfill
+\noindent\begin{minipage}{\textwidth}
+This project, involving the transcription of O. Leroy's thesis, was was carried out by Niels Borne, Mateo Carmona, and David Michael Roberts. The transcription aims to be as faithful as possible to the original. This edition should be regarded as provisional; remarks, comments, and corrections are welcome. More details are available at: \url{https://github.com/gmateocarmona/Groupoide-fondamental-et-theoreme-de-Van-Kampen-en-theorie-des-topos}
+\end{minipage}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+%\pagestyle{fancyplain}
+
+\renewcommand{\contentsname}{TABLE DES MATIÈRES}
+\tableofcontents\thispagestyle{empty}
+
+\setcounter{page}{1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./chapters/1.tex}
+\input{./chapters/2.tex}
+\input{./chapters/3.tex}
+\input{./chapters/4.tex}
+\input{./chapters/5.tex}
+\input{./chapters/app.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+%\thispagestyle{empty}
+\mbox{}
+\thispagestyle{empty}
+%\begin{tikzpicture}[remember picture,overlay]
+%    \draw[line width=10pt,color=DarkKhaki]
+%        ([shift={(-0.5\pgflinewidth,-0.5\pgflinewidth)}]current page.north west)
+%        rectangle
+%        ([shift={(0.5\pgflinewidth,0.5\pgflinewidth)}]current page.south east);
+%\end{tikzpicture}
+
+\end{document}
+
+
+
+%End
