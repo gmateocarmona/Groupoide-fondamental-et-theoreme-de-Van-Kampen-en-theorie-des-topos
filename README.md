@@ -4,7 +4,7 @@ Université des Sciences et Techniques du Languedoc, U.E.R. de Mathématiques, M
 
 ##
 
-This project, involving the transcription of O. Leroy's thesis, was was carried out by Niels Borne, Mateo Carmona, and David Michael Roberts. The transcription aims to be as faithful as possible to the original. This edition should be regarded as provisional; remarks, comments, and corrections are welcome.
+This project, involving the transcription of O. Leroy's thesis, was carried out by Niels Borne, Mateo Carmona, and David Michael Roberts. The transcription aims to be as faithful as possible to the original. This edition should be regarded as provisional; remarks, comments, and corrections are welcome.
 
 ## 
 
