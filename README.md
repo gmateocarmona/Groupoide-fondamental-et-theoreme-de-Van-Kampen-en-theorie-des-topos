@@ -14,10 +14,3 @@ This project, involving the transcription of O. Leroy's thesis, was was carried 
 - [ ] Preprint
 
 ---
-
-- See [Issues](https://github.com/carmonamateo/leroy/issues)
-
----
-
-mateo.carmona@csg.igrothendieck.org
-
