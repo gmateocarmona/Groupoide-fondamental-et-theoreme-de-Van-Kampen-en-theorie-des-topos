@@ -9,7 +9,7 @@ This project, involving the transcription of O. Leroy's thesis, was carried out 
 ## 
 
 - [x] Transcription <br>
-[Releases](https://github.com/gmateocarmona/Groupoide-fondamental-et-theoreme-de-Van-Kampen-en-theorie-des-topos/releases), [pdf](https://github.com/gmateocarmona/Groupoide-fondamental-et-theoreme-de-Van-Kampen-en-theorie-des-topos/releases/download/main-2026-05-13-2996a28a/main-2026-05-13-2996a28a.pdf)
+[Releases](https://github.com/gmateocarmona/Groupoide-fondamental-et-theoreme-de-Van-Kampen-en-theorie-des-topos/releases)
 - [x] Proofread
 - [ ] Preprint
 
